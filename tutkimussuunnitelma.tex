@@ -1,0 +1,173 @@
+\documentclass[utf8]{gradu3}
+% Jos työ on kandidaatintutkielma eikä pro gradu, käytä ylläolevan asemesta
+%\documentclass[utf8,bachelor]{gradu3} Jos kirjoitat englanniksi, käytä
+%ylläolevan asemesta \documentclass[utf8,english]{gradu3} tai
+%\documentclass[utf8,bachelor,english]{gradu3}
+
+\usepackage{graphicx} % kuvien mukaan ottamista varten
+
+\usepackage{amsmath} % hyödyllinen jos tekstisi sisältää matikkaa,
+                     % ei pakollinen
+
+\usepackage{booktabs} % hyvä kauniiden taulukoiden tekemiseen
+
+% HUOM! Tämän tulee olla viimeinen \usepackage koko dokumentissa!
+\usepackage[bookmarksopen,bookmarksnumbered,linktocpage]{hyperref}
+
+\addbibresource{pro-gradu.bib} % Lähdetietokannan tiedostonimi
+
+\begin{document}
+
+\title{Tutkimussuunnitelma}
+%\translatedtitle{Usage of the {gradu3} document class for \LaTeX\ theses}
+%\studyline{Kaikki opintosuunnat} \avainsanat{} \keywords{} \tiivistelma{}
+%\abstract{}
+
+\author{Lauri Holopainen}
+\contactinformation{\texttt{lauri.m.s.holopainen@jyu.fi}}
+% jos useita tekijöitä, anna useampi \author-komento \supervisor{Ohjaamaton työ}
+% jos useita ohjaajia, anna useampi \supervisor-komento
+
+% \type{tutkielmapohjan esimerkki ja käsikirja} % et tarvitse tätä riviä
+% tutkielmassa!
+
+\maketitle
+
+\mainmatter
+
+\chapter{Johdanto}
+% - Bugit
+%   * Käytännön tärkeys.
+%   * Tieteellinen merkitys.
+Ohjelmistokehityksen ja  ja ohjelmistojen ylläpidon keskeisiä ongelmia ovat
+ohjelmointivirheet eli bugit. Mitä myöhemmässä vaiheessa bugit huomataan, sitä
+enemmän resursseja, siis työaikaa, voi olettaa kuluvan niiden korjaamiseen. Olen
+kiinnostunut siitä, kuinka bugikorjauksiin kuluvaa aikaa voisi arvioida
+matemaattisten mallien avulla. Tutkielmassani aion selvittää, voisiko nyt jo
+kehitettyjä malleja muuttaa tarkemmiksi tuomalla samaan malliin parhaita
+piirteitä useista tutkimuksista.
+
+Modernissa ketterässä ohjelmistokehitystyössä hyödynnetään usein erilaisia
+tikettijärjestelmiä bugien ja kehitysideoiden raportointiin. Tiketit voivat
+saada alkunsa niin loppukäyttäjien, kuin kehittäjäorganisaation huomioista. Kun
+tiketin vastaanottaja kuittaa tehtävän työn alle, hän arvioi tarvittavan
+ohjelmistomuutoksen kriittisyyden, nimittää sen jollekin kehittäjälle, ja arvioi
+siihen kuluvan ajan. Kuluvan ajan sijaan voidaan myös arvioida tehtävän
+haasteellisuutta (\textit{story points}). Onnistunut tehtävän vaatiman ajan
+arviointi voi auttaa kehitysprojektin vetäjiä suunnittelemaan aikataulun
+suunnittelussa ja resurssien suuntaamisessa. Loppukäyttäjiä hyvät
+korjausaika-arviot voivat myös hyödyttää esimerkiksi oman työnsä suunnittelussa
+tai sen arvioinnissa, että onko järkevää jäädä odottamaan korjauksen
+valmistumista.
+
+Bugikorjausten valmistumisaikaa on yritetty arvioida louhimalla tietoa
+tikettijärjestelmiä, ja luomalla tilastollisia malleja muun muassa koneoppimisen
+avulla. Yksi käytetyimpiä mittareita on aika tiketin avaamisesta sen
+sulkeutumiseen. Tutkimuksissa saadut tulokset ovat kuitenkin olleet välillä
+ristiriitaisia, eivätkä aina kovinkaan tarkkoja. Vaikuttaisi siis siltä, että
+lisätutkimuselle on tarvetta mikäli näitä malleja halutaan soveltaa käytännössä
+osana.
+
+\chapter{Kirjallisuuskartoitus}
+% - menetelmä: voidaan esitellä hakusanat, hakuprosessi, hakukoneet ja
+%   tietokannat (hyödyllistä tietoa kirjata itselle muistiin, ei välttämättä
+%   tule lopulliseen graduun)
+% - tulokset (tiivistetty kuvaus löytyneistä artikkeleista)
+% - kerrotaan, mitä tutkittavasta aiheesta tiedetään entuudestaan metodilähteitä
+%   mainittava0
+
+% - Tiedonlouhinta
+% - Mining software repositories Issue resolution time/bug fixing time
+%   estimation.
+
+Tiedonlouhinnan voi määritellä oleellisen tiedon ja kiinnostavien kaavojen
+löytämiseksi suuresta datamassasta \parencite[][8]{han-data_mining}. Alalla
+käytetään monenlaisia tilastotieteen, matematiikan ja tietojenkäsittelyn
+tekniikoita \parencite{clifton-2019}. 
+
+Ohjelmistokehityksessä hyödynnetään usein hajautettuja
+versiohallintajärjestelmiä kuten Git, sekä internet-palveluja kuten Github ja
+Bitbucket tietovarastojen (\textit{repository}) hallintaan. Nämä palvelut
+tarjoavat usein lähdekoodin jakamisen lisäksi myös muita ominaisuuksia, kuten
+jatkuvan integraation kanavan, pull requestit, ja bugiraportit. Mining software
+repositories (MSR) on tiedonlouhinnan osa-alue, joka on erikoistunut
+ohjelmistokehityksessä syntyvän strukturoidun ja tekstimuotoisen datan
+käsittelyyn. Tutkimuksen kohteita ovat esimerkiksi koodin mätäneminen, muutosten
+riippuvuus, bugien ennakointi ja syyt, sekä kehittäjien yhteistyö.
+\parencite{guemes-pena-emerging_topics}
+
+\section{Bugien korjausajan arviointi}
+Malleja ohjelmistobugien korjausajan arviointiin on kehitetty useissa
+tutkimuksissa. Näistä valtaosa on julkaistu konfferenssipapereina. Joistakin
+löytyy myös pidempi artikkelimuotoinen teksti. Kirjallisuutta on löytynyt eniten
+ACM DL ja IEEE -tietokannoista, sekä seuraamalla viitteitä
+snowballing-tekniikalla. 
+
+Tähän tiivistelyä löytyneistä tutkimuksista\dots
+\parencite[Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020} %,Ardimento-2020,Lee-2020, ramarao-2016}
+
+\chapter{Tutkimusaihe/tutkimuskysymys}
+Tutkimuksen tavoitteena on tuottaa lisää tietoa siitä, kuinka bugi-raportin
+ratkeamisaikaa voidaan ennustaa käyttäen hyväksi tiedon louhimisen menetelmiä.
+Pyrin käyttämään hyväksi aiemmassa tutkimuksessa \parencite{riivo-2016} melko
+hyväksi todettua mallia ja dataa, ja testaamaan voiko mallia parantaa ottamalla
+huomioon muissa tutkimuksissa tehtyjä havaintoja. Tutkimuksen tulosten avulla
+voi tehdä arvioita siitä, kuinka kypsä tutkimussuunta on käytännön sovellusten
+kannalta, ja mihin suuntaan huomio kannattaisi kiinnittää mallien kehittämisen
+kannalta.
+
+\chapter{Tutkimusstrategia/metodi ja sen valintaperusteet}
+Tutkimusprosessin alussa on tarkoitus perehtyä syvällisesti käytettyyn malliin
+\parencite{riivo-2016}, jotta tutkijalle syntyy sen tarjoamista
+mahdollisuuksista ja rajoista. Tärkeää on tietää esimerkiksi, onko lähtödatan
+käsittelyprosessi toistettavissa, ja millaisilla muuttujilla mallia on
+mahdollista laajentaa. Sen lisäksi alussa on myös kerättävä mahdollisimman hyvin
+kaikki aihetta käsittelevät tutkimukset. Kerättyjen tutkimusten perusteella
+voidaan tehdä perusteltu valinta siitä, mitkä ovat potentiaalisimpia
+vaihtoehtoja mallin kehittämiseksi.
+
+Tämän jälkeen valittu/valitut muutokset toteutetaan ohjelmakoodiin ja
+käytettävyyn dataan, sekä verrataan saadun uuden mallin tuloksia aiempiin
+tutkimuksiin. Saadut tulokset ovat luonteeltaan kvantitatiivisia.
+
+% \chapter{Aineiston keruun suunnittelu}
+% - mitä, keneltä, milloin, miten
+% - ml. eettiset näkökohdat (hyvä tieteellinen käytäntö jota noudatetaan,
+%   tietosuoja, tieteellisen tutkimuksen rekisteriseloste)
+\chapter{Aineisto}
+Lähtökohtana aineistolle on aiemman tutkimuksen \parencite{riivo-2016}
+oheismateriaalina julkaistu data ja lähdekoodi. Alkuperäinen data on saatu
+GHTorrent-projektin \parencite{Gousi13} keräämän datasetin pohjalta.
+GHTorrent-projekti kerää julkisesti saatavilla olevaa dataa Github-palvelusta
+löytyvistä projekteista. Projektiin kerättyä dataa on käytetty aiemmin useissa
+tutkimuksissa. Datasta on poistettu käyttäjänimet ja sähköpostiosoitteet
+tietosuoja-asetusten johdosta.
+
+Jos tarpeellista ja mahdollista, voi olemassa olevaa aineistoa laajentaa
+käyttämällä hyväksi GHTorrentin tarjoamaa dataa. Alkuperäisessä aineistossa on
+dataa noin kahden vuoden ajalta, kun nykyään projektissa on dataa kuuden vuoden
+ajalta.
+% - kuvaa konkreetilla tasolla miten ja milloin aineisto kerätään, käsitellään,
+%   talletetaan, arkistoidaan/hävitetään
+% - Aikataulu!
+%\chapter{Aineiston analyysi} 
+% - analyysin kuvaus, millä menetelmällä analyysi tehdään
+
+%\chapter{Tulokset} 
+%
+%\chapter{Johtopäätökset}
+\chapter{Aikataulu}
+\begin{itemize}
+  \item Maaliskuu: Teoreettisen viitekehyksen vahvistaminen, kirjallisuuteen perehtyminen.
+  \item Huhtikuu:  Kirjallisuuteen perehtyminen, aineistoon perehtyminen.
+  \item Toukokuu:  Aineistoon perehtyminen, kirjallisuuskatsauksen kirjoittaminen.
+  \item Kesäkuu:   Ohjelmointi, datan käsittely.
+  \item Heinäkuu:  Tulosten kerääminen. Tehdyn työn kirjaaminen.
+  \item Elokuu:    Tulosten analysointi.
+  \item Syyskuu:   Tulosten kirjaaminen.
+  \item Lokakuu:   Tutkielman viimeistely
+  \item Marraskuu: Palautus.
+\end{itemize}
+
+\printbibliography
+\end{document}
