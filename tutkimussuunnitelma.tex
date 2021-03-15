@@ -98,13 +98,34 @@ riippuvuus, bugien ennakointi ja syyt, sekä kehittäjien yhteistyö.
 
 \section{Bugien korjausajan arviointi}
 Malleja ohjelmistobugien korjausajan arviointiin on kehitetty useissa
-tutkimuksissa. Näistä valtaosa on julkaistu konfferenssipapereina. Joistakin
-löytyy myös pidempi artikkelimuotoinen teksti. Kirjallisuutta on löytynyt eniten
-ACM DL ja IEEE -tietokannoista, sekä seuraamalla viitteitä
-snowballing-tekniikalla. 
+tutkimuksissa 2010-luvulla. Dataa on kerätty niin avoimen kuin suljetun
+lähdekoodin projekteista. Näistä valtaosa on julkaistu konfferenssipapereina.
+Joistakin löytyy myös pidempi artikkelimuotoinen teksti. Kirjallisuutta on
+löytynyt eniten ACM DL ja IEEE -tietokannoista, sekä seuraamalla viitteitä
+snowballing-tekniikalla. Tutkimukset eroavat muun muassa mallin kehityksessä
+käytettyjen projektien määrässä, hyödynnetyissä attribuuteissa ja
+koneoppimisalgoritmeissa.
 
-Tähän tiivistelyä löytyneistä tutkimuksista\dots
-\parencite[Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020} %,Ardimento-2020,Lee-2020, ramarao-2016}
+\textcite{Giger-2010} tutkivat bugien luokittelua hitaasti ja nopeasti
+ratkaistaviin. Aineistona he käyttivät kuutta Eclipse-, Mozilla- ja
+Gnome-säätiöiden avoimen lähdekoodin projektia. Heidän päätöspuihin perustuva
+mallinsa luokitteli bugit 10-20\% sattumanvaraista arvausta paremmin.
+Tutkimuksessa havaittiin ennusteen kannalta keskeisiksi muuttujiksi esimerkiksi
+delegoitu kehittäjä ja avaamisen ajankohta. Avaamisen jälkeen muuttuvien
+dynaamisten muuttujien mukaan ottaminen paransi mallin tarkkuutta. Mallin
+heikkoutena voisi pitää sitä että opetus- ja testidataa ei oltu eroteltu
+ajallisesti, eli mallissa oli tietoa "tulevaisuudesta" suhteessa testidataan.
+Mallin käyttökelpoisuus uusien bugien korjausajan ennustamiseen ei siis ole
+ollenkaan varmaa.
+
+\textcite{Bhattacharya-2011} tarkastelivat eräitä muuttujia, joita on käytetty
+bugikorjauksen valmistumisaikaa ennustavissa malleissa, ja huomasivat, että
+pieni määrä muuttujia ei riitä selittämään ilmiötä. He myös huomasivat
+ristiriidan aiempaan tutkimukseen \parencite{Guo-2010}, jossa todettiin
+korrelaatio bugin raportoijan ja sen ratkeamisen välillä. Avoimen lähdekoodin
+projekteissa tätä yhteyttä ei voitu todeta \parencite{Bhattacharya-2011}.
+
+\parencite[][Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020} %,Ardimento-2020,Lee-2020, ramarao-2016}
 
 \chapter{Tutkimusaihe/tutkimuskysymys}
 Tutkimuksen tavoitteena on tuottaa lisää tietoa siitä, kuinka bugi-raportin
@@ -128,7 +149,10 @@ vaihtoehtoja mallin kehittämiseksi.
 
 Tämän jälkeen valittu/valitut muutokset toteutetaan ohjelmakoodiin ja
 käytettävyyn dataan, sekä verrataan saadun uuden mallin tuloksia aiempiin
-tutkimuksiin. Saadut tulokset ovat luonteeltaan kvantitatiivisia.
+tutkimuksiin. Saadut tulokset ovat luonteeltaan kvantitatiivisia. 
+
+Tutkimusen kokeellinen osuus on siis luonteeltaan tiedonlouhimis- ja
+koneoppimistehtävä.
 
 % \chapter{Aineiston keruun suunnittelu}
 % - mitä, keneltä, milloin, miten
@@ -147,6 +171,10 @@ Jos tarpeellista ja mahdollista, voi olemassa olevaa aineistoa laajentaa
 käyttämällä hyväksi GHTorrentin tarjoamaa dataa. Alkuperäisessä aineistossa on
 dataa noin kahden vuoden ajalta, kun nykyään projektissa on dataa kuuden vuoden
 ajalta.
+
+ALkuperäiseen lähdekoodiin ei ole liitetty mitään tekijänoikeuslisenssiä, joten
+lupa koodin uudelleenkäyttöön ja muokkaamiseen kysyttiin henkilökohtaisesti
+sähköpostitse.
 % - kuvaa konkreetilla tasolla miten ja milloin aineisto kerätään, käsitellään,
 %   talletetaan, arkistoidaan/hävitetään
 % - Aikataulu!
