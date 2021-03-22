@@ -125,6 +125,36 @@ ristiriidan aiempaan tutkimukseen \parencite{Guo-2010}, jossa todettiin
 korrelaatio bugin raportoijan ja sen ratkeamisen välillä. Avoimen lähdekoodin
 projekteissa tätä yhteyttä ei voitu todeta \parencite{Bhattacharya-2011}.
 
+\textcite{Marks-2011} käyttivät Random Forest -algoritmia luodakseen tutkiakseen
+aikaa bugin delegoinnista sen korjaamiseen. Tutkimuksen aineistona oli Eclipse-
+ja Mozilla-projektien Bugzilla-tietokannat. Saadut mallit ennustivat korjausajan
+n. 65\% tarkkuudella kolmeen luokkaan: kvartaalin, vuoden ja kolmen vuoden
+sisällä korjattaviin. Tutkijat myös huomasivat, että parhaiten korjausaikaa
+ennustavat muuttujat erosivat projektien välillä. Tämä antaa aihetta epäillä
+sitä, kuinka tarkkaa mallia voi luoda, jos yleisesti hyvin toimivia muuttujia ei
+löydy.
+
+\textcite{Zhang-2013} tutkivat yhden ohjelmistoalan organisaation sisäisiä
+projekteja, ja loivat kolme mallia estimoimaan eri näkökulmia bugien
+korjausaikaan. Markovin ketjuihin perustuvalla mallilla he onnistuivat
+luotettavasti ennustamaan tulevaisuudessa korjattavien ohjelmistovirheiden
+lukumäärän. Monte Carlo -simulointiin perustuvalla metodilla he estimoivat
+aikaa, joka kuluu annetun bugimäärän korjaamiseen. Luokittelemalla bugit
+kNN-algoritmilla nopeasti ja hitaasti korjautuviin he myös onnistuivat
+luokittelemaan yksittäisten bugien korjausaikoja (F-arvo 72.45\%). Tärkeänä
+osana hyvän tuloksen saamista oli se, että tutkijat sovittivat mallinsa ottamaan
+huomioon korjausaikojen jakauman, jossa suurin osa bugeista korjataan varsin
+lyhyessä ajassa.
+
+\textcite{Pfahl-2016} toistivat usean aiemmin bugien tai tehtävätikettiin
+kuluvan ajan ennustamiseen esitetyn koneoppimismenetelmän, ja vertasivat saatua
+tarkkuutta samojen tikettien luomisessa annettuun asiantuntija-arvioon.
+Pääsääntöisesti asiantuntija-arviot olivat tarkempia, mutta Random Forest
+-algoritmiin ja logistiseen regressioon perustuvat mallit pääsivät varsin
+lähelle. Tekstianalyysiin perustuva \textit{Spherical k-means Clustering} tuotti
+jopa tarkempia arvioita kuin asiantunijat.
+
+
 \parencite[][Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020} %,Ardimento-2020,Lee-2020, ramarao-2016}
 
 \chapter{Tutkimusaihe/tutkimuskysymys}
