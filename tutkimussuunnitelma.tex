@@ -154,8 +154,53 @@ Pääsääntöisesti asiantuntija-arviot olivat tarkempia, mutta Random Forest
 lähelle. Tekstianalyysiin perustuva \textit{Spherical k-means Clustering} tuotti
 jopa tarkempia arvioita kuin asiantunijat.
 
+\textcite{Porru-2016} kehittivät käytännön ohjelmistokehitykseen sopivan mallin,
+joka ennustaa tehtävälle annettavien \textit{story point} -pisteiden määrän.
+Niillä kuvataan tehtävän vaativuutta, ei niinkään arvioitua työaikaa. Paras
+luokitinmalli saatiin aikaan tukivektorikoneella. Keskeisenä elementtinä
+piirteiden louhinnassa oli tekstianalyysi, mihin tukivektorikoneet sopivat
+hyvin. Mallin opetukseen riitti noin 300 tehtävätikettiä. Tehtävät jakautuivat
+\textit{story point} -pisteiden mukaan 13:n luokkaan ja mallin keskimääräinen
+tarkkuus oli 64 \%. Tutkimuksen aineistona oli kahdeksan avoimen lähdekoodin
+projektia ja yksi teollisuusprojekti.
 
-\parencite[][Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020} %,Ardimento-2020,Lee-2020, ramarao-2016}
+Myöhemmin \textcite{Scott-2018} tulivat kuitenkin siihen tulokseen, että
+\textit{story point} -pisteitä ennustettaessa kehittäjäkohtaisten ominaisuuksien
+perusteella kehitetty tukivektorikone-pohjainen malli tuottaa parempia tuloksia
+kuin tekstianalyysiin pohjaava. \textcite{Scott-2018} käyttivät samaa aineistoa,
+kuin \textcite{Porru-2016}, mutta heidän tekstianalyysiin pohjaavan mallin
+tarkkuus oli vain 35.8\%, mikä on ristiriidassa aiemman tutkimuksen tulosten
+kanssa. Koska myös kehittäjäkohtaisten ominaisuuksien vaikutuksesta tehtävien
+valmistumisaikaan on ristiriitaisia tuloksia, vahvistavat nämä tutkimukset sitä
+näkemystä, että myöskään bugin korjausajan ennustamista ei voida yksinkertaistaa
+vain muutamaan muuttujaan.
+
+
+\textcite{Ardimento-2017} käyttivät myös tukivektorikoneita mallissa, joka
+ennustaa bugeja nopeasti tai hitaasti korjattavaiksi sen tiedon perusteella,
+jota on käytettävissä tiketin avaushetkellä. Aineisona käytettiin kolmea avoimen
+lähdekoodin projektia. Malli luokitteli bugitiketit nopeiksi 35-52\%
+tarkkuudella, ja sen herkkyys (\textit{recall}) oli 60-76\%. 
+
+\textcite{Ardimento-2016} lähestyivät samaa ennustustehtävää hyödyntämällä
+SLDA-tekstinlouhinta-algoritmia. SLDA-algoritmin avulla he pyrkivät erottelemaan
+jokaisen bugiraportin kuvauksesta useampia ala-aiheita, jotka voisivat selittää
+paremmin bugien korjausaikaa. He painottivat malliaan tunnistamaan erityisesti
+hitaasti korjattavat bugit. Aineistona heillä oli avoimen lähdekoodin Eclipse-,
+Gentoo-, KDE- ja OpenOffice-projektit. Painotuksen vuoksi mallin tarkkuus jäi
+alle tukivektorikoneen, mutta se tunnisti useimmat hitaasti korjattavat bugit.
+
+\textcite{Al-Zubaidi-2017} käyttivät evoluutioalgoritmia tehtävän ratkaisemiseen
+kuluvaa aikaa ennustavan mallin kehittämiseksi. Tavoitteena tehdä ennusteita
+sillä tiedolla, jota on käytettävissä tiketin avaushetkellä. Tutkimuksen
+lähdeaineistona oli viisi Apache-järjestön avoimen lähdekoodin projektia.
+Kyseisellä aineistolla evoluutioalgoritmi tuotti paremman mallin kuin
+lineaariseen regressioon, kNN-algoritmi tai Random Forest -algoritmi. Mallin
+etuna useisiin muihin voinee pitää sitä, että luokitteluasteikollisten
+aikaikkunoiden sijaan ennusteet ovat jatkuva-asteikollisia.
+
+\parencite[][Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020}
+%,Ardimento-2020,Lee-2020, ramarao-2016}
 
 \chapter{Tutkimusaihe/tutkimuskysymys}
 Tutkimuksen tavoitteena on tuottaa lisää tietoa siitä, kuinka bugi-raportin
@@ -193,7 +238,8 @@ Lähtökohtana aineistolle on aiemman tutkimuksen \parencite{riivo-2016}
 oheismateriaalina julkaistu data ja lähdekoodi. Alkuperäinen data on saatu
 GHTorrent-projektin \parencite{Gousi13} keräämän datasetin pohjalta.
 GHTorrent-projekti kerää julkisesti saatavilla olevaa dataa Github-palvelusta
-löytyvistä projekteista. Projektiin kerättyä dataa on käytetty aiemmin useissa
+löytyvistä projekteista. %Lähteitä?
+Projektiin kerättyä dataa on käytetty aiemmin useissa
 tutkimuksissa. Datasta on poistettu käyttäjänimet ja sähköpostiosoitteet
 tietosuoja-asetusten johdosta.
 
@@ -207,8 +253,7 @@ lupa koodin uudelleenkäyttöön ja muokkaamiseen kysyttiin henkilökohtaisesti
 sähköpostitse.
 % - kuvaa konkreetilla tasolla miten ja milloin aineisto kerätään, käsitellään,
 %   talletetaan, arkistoidaan/hävitetään
-% - Aikataulu!
-%\chapter{Aineiston analyysi} 
+% - Aikataulu! \chapter{Aineiston analyysi} 
 % - analyysin kuvaus, millä menetelmällä analyysi tehdään
 
 %\chapter{Tulokset} 
@@ -216,9 +261,11 @@ sähköpostitse.
 %\chapter{Johtopäätökset}
 \chapter{Aikataulu}
 \begin{itemize}
-  \item Maaliskuu: Teoreettisen viitekehyksen vahvistaminen, kirjallisuuteen perehtyminen.
+  \item Maaliskuu: Teoreettisen viitekehyksen vahvistaminen, kirjallisuuteen
+  perehtyminen.
   \item Huhtikuu:  Kirjallisuuteen perehtyminen, aineistoon perehtyminen.
-  \item Toukokuu:  Aineistoon perehtyminen, kirjallisuuskatsauksen kirjoittaminen.
+  \item Toukokuu:  Aineistoon perehtyminen, kirjallisuuskatsauksen
+  kirjoittaminen.
   \item Kesäkuu:   Ohjelmointi, datan käsittely.
   \item Heinäkuu:  Tulosten kerääminen. Tehdyn työn kirjaaminen.
   \item Elokuu:    Tulosten analysointi.
