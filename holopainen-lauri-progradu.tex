@@ -1,14 +1,7 @@
 \documentclass[utf8]{gradu3}
-% Jos työ on kandidaatintutkielma eikä pro gradu, käytä ylläolevan asemesta
-%\documentclass[utf8,bachelor]{gradu3} Jos kirjoitat englanniksi, käytä
-%ylläolevan asemesta \documentclass[utf8,english]{gradu3} tai
-%\documentclass[utf8,bachelor,english]{gradu3}
-
 \usepackage{graphicx} % kuvien mukaan ottamista varten
-
 \usepackage{amsmath} % hyödyllinen jos tekstisi sisältää matikkaa,
                      % ei pakollinen
-
 \usepackage{booktabs} % hyvä kauniiden taulukoiden tekemiseen
 
 % HUOM! Tämän tulee olla viimeinen \usepackage koko dokumentissa!
@@ -18,18 +11,17 @@
 
 \begin{document}
 
-\title{Tutkimussuunnitelma}
-%\translatedtitle{Usage of the {gradu3} document class for \LaTeX\ theses}
-%\studyline{Kaikki opintosuunnat} \avainsanat{} \keywords{} \tiivistelma{}
-%\abstract{}
+\title{Avoimen lähdekoodin projektien ohjelmistovirheiden korjausajan arviointi tiedonlouhimismenetelmin}
+\translatedtitle{Pro Gradu (to be\dots)}
+\studyline{Ohjelmistotekniikka} \avainsanat{} \keywords{} 
+\tiivistelma{Tiivistelmä}
+\abstract{}
 
 \author{Lauri Holopainen}
 \contactinformation{\texttt{lauri.m.s.holopainen@jyu.fi}}
-% jos useita tekijöitä, anna useampi \author-komento \supervisor{Ohjaamaton työ}
+% jos useita tekijöitä, anna useampi \author-komento 
+\supervisor{Ville Isomöttönen}
 % jos useita ohjaajia, anna useampi \supervisor-komento
-
-% \type{tutkielmapohjan esimerkki ja käsikirja} % et tarvitse tätä riviä
-% tutkielmassa!
 
 \maketitle
 
@@ -68,17 +60,21 @@ ristiriitaisia, eivätkä aina kovinkaan tarkkoja. Vaikuttaisi siis siltä, ett�
 lisätutkimuselle on tarvetta mikäli näitä malleja halutaan soveltaa käytännössä
 osana.
 
-\chapter{Kirjallisuuskartoitus}
-% - menetelmä: voidaan esitellä hakusanat, hakuprosessi, hakukoneet ja
-%   tietokannat (hyödyllistä tietoa kirjata itselle muistiin, ei välttämättä
-%   tule lopulliseen graduun)
-% - tulokset (tiivistetty kuvaus löytyneistä artikkeleista)
-% - kerrotaan, mitä tutkittavasta aiheesta tiedetään entuudestaan metodilähteitä
-%   mainittava0
+\chapter{Ohjelmistokehitys avoimen lähdekoodin projekteissa}
+% - Ohjelmistokehitys/OSS-projektit
+%   * Ylläpito
+\section{Bugien seuranta}
+%   * Bugit
+%     - Korjaus
 
+\chapter{Tiedonlouhinta}
 % - Tiedonlouhinta
+%   * Menetelmät, arviointi.
+% - Tekstin prosessointi tiedonlouhinnassa.
 % - Mining software repositories Issue resolution time/bug fixing time
 %   estimation.
+
+% Projektikohtiaset vs. yleistettävät featuret?
 
 Tiedonlouhinnan voi määritellä oleellisen tiedon ja kiinnostavien kaavojen
 löytämiseksi suuresta datamassasta \parencite[][8]{han-data_mining}. Alalla
@@ -97,6 +93,17 @@ riippuvuus, bugien ennakointi ja syyt, sekä kehittäjien yhteistyö.
 \parencite{guemes-pena-emerging_topics}
 
 \section{Bugien korjausajan arviointi}
+
+% Motivaatio koneavusteisen korjausajan arvioinnin olemassaololle. Käytännön
+% syyt.
+% * kustannusten arvionti
+% * delegointi
+% * loppukäyttäjien tarpeet
+% * muiden ohjelmistojen riippuvuudet
+% * sisäisten ja ulkoisten tarpeiden tyydyttäminen hyvissä ajoin? Tieteelliset
+%   syyt.
+
+\subsection{Aiemmat koneoppimiseen perustuvat mallit}
 Malleja ohjelmistobugien korjausajan arviointiin on kehitetty useissa
 tutkimuksissa 2010-luvulla. Dataa on kerätty niin avoimen kuin suljetun
 lähdekoodin projekteista. Näistä valtaosa on julkaistu konfferenssipapereina.
@@ -105,6 +112,12 @@ löytynyt eniten ACM DL ja IEEE -tietokannoista, sekä seuraamalla viitteitä
 snowballing-tekniikalla. Tutkimukset eroavat muun muassa mallin kehityksessä
 käytettyjen projektien määrässä, hyödynnetyissä attribuuteissa ja
 koneoppimisalgoritmeissa.
+
+\textcite{Anh-2011} tutkivat kehittäjäkohtaisten attribuuttien merkitystä bugien
+korjausaikojen suhteen. Vahvimpana havaintona he huomasivat kehittäjän aiemmin
+korjaamien bugien korjausaikojen keskiarvon olevan potentiaalinen muuttuja,
+jonka mukaan ottaminen paransi koneoppimisalgoritmin tuottaman mallin tarkkutta
+2.87-12.07\%.
 
 \textcite{Giger-2010} tutkivat bugien luokittelua hitaasti ja nopeasti
 ratkaistaviin. Aineistona he käyttivät kuutta Eclipse-, Mozilla- ja
@@ -118,12 +131,42 @@ ajallisesti, eli mallissa oli tietoa "tulevaisuudesta" suhteessa testidataan.
 Mallin käyttökelpoisuus uusien bugien korjausajan ennustamiseen ei siis ole
 ollenkaan varmaa.
 
-\textcite{Bhattacharya-2011} tarkastelivat eräitä muuttujia, joita on käytetty
-bugikorjauksen valmistumisaikaa ennustavissa malleissa, ja huomasivat, että
-pieni määrä muuttujia ei riitä selittämään ilmiötä. He myös huomasivat
-ristiriidan aiempaan tutkimukseen \parencite{Guo-2010}, jossa todettiin
-korrelaatio bugin raportoijan ja sen ratkeamisen välillä. Avoimen lähdekoodin
-projekteissa tätä yhteyttä ei voitu todeta \parencite{Bhattacharya-2011}.
+\textcite{Lamkanfi-2012} huomasivat epäilyttävän piirteen bugiseurantaohjelmista
+saadusta datasta: suuri osa bugeista korjataan heti avaamisen jälkeen. He
+selittivät tämän sillä, että joskus ohjelmistokehittäjät korjaavat löytämänsä
+virheen ennen kuin sitä on ehditty raportoida. Kehittäjät sitten avaavat ja
+sulkevat raportin samaan aikaan kuin tallentavat korjatun ohjelmakoodin. He
+epäilivät, että nämä hyvin nopeasti suljetut raportit voivat hämmentää
+koneoppimisalgorimeja ja esittivät hyvin nopeasti suljettujen bugien
+suodattamista aineistosta. %
+He käyttivät Naiivia Bayes-luokittelijaa ja vertailivat saadun mallin
+suorituskyvyn muutosta, kun epäilyttävät bugit on poistettu aineistosta.
+Tuloksena luokittelijan AUC-arvo parani jonkin verran suodatetulla datalla, ja
+johtopäätöksenä voinee todeta, että kuten muussakin datanlouhinnassa, myös
+Mining Software Repositories -kentällä poikkeavien havaintojen analysointi voi
+tuottaa parempia tuloksia.
+ 
+
+\textcite{Guo-2010} havaitsivat, että bugin raportoijan ja sitä ratkaisevan
+kehittäjän  historia vaikuttavat raportoitujen bugien korjausaikaan. He laskivat
+raportoijan "maineen"\ avattujen ja korjattujen bugiraporttien suhteena ja
+totesivat tämän muuttujan parantavan luokittimen suorituskykyä.%
+\textcite{Bhattacharya-2011} huomasivat ristiriidan \parencite{Guo-2010}
+tutkimukseen, sillä he eivät avoimen lähdekoodin projekteissa havainneet
+yhteyttä raportoijan "maineen"\ ja bugien korjausaikojen välillä. He
+tarkastelivat myös muita muuttujia, joita on käytetty bugikorjauksen
+valmistumisaikaa ennustavissa malleissa, ja huomasivat, että pieni määrä
+muuttujia ei riitä selittämään ilmiötä. \parencite{Bhattacharya-2011}
+Kehittäjäkohtaista pisteytystä on esittänyt myös \textcite{ramarao-2016}. Heidän
+esittämänsä kaavan mukaan kehittäjän "maine" lasketaan hänen raportoimiensa jo
+korjattujen bugien perusteella. Sen lisäksi pisteytyksen painoarvo suhteutetaan
+projektikohtaisesti bugin korjausajan ennustamista varten.
+\textcite{ramarao-2016} osoittivat pisteytyksen toimivuuden knn-pohjaisella
+luokittimella.
+
+%
+% NOTE TO SELF: Käytä \textcite{Habayeb-2018}!
+%
 
 \textcite{Marks-2011} käyttivät Random Forest -algoritmia luodakseen tutkiakseen
 aikaa bugin delegoinnista sen korjaamiseen. Tutkimuksen aineistona oli Eclipse-
@@ -144,7 +187,10 @@ kNN-algoritmilla nopeasti ja hitaasti korjautuviin he myös onnistuivat
 luokittelemaan yksittäisten bugien korjausaikoja (F-arvo 72.45\%). Tärkeänä
 osana hyvän tuloksen saamista oli se, että tutkijat sovittivat mallinsa ottamaan
 huomioon korjausaikojen jakauman, jossa suurin osa bugeista korjataan varsin
-lyhyessä ajassa.
+lyhyessä ajassa. Markovin ketjuja käyttivät myös \textcite{Pombo-2020}, joiden
+kehittämä malli luokitteli bugit nopeasti ja hitaasti korjattaviksi
+65.01-77.87\% tarkkuuten yltäen. Ylisovittumisesta johtuen malli sai parhaat
+tulokset, kun opetus- ja testidataa oli saman verran.
 
 \textcite{Pfahl-2016} toistivat usean aiemmin bugien tai tehtävätikettiin
 kuluvan ajan ennustamiseen esitetyn koneoppimismenetelmän, ja vertasivat saatua
@@ -175,7 +221,6 @@ valmistumisaikaan on ristiriitaisia tuloksia, vahvistavat nämä tutkimukset sit
 näkemystä, että myöskään bugin korjausajan ennustamista ei voida yksinkertaistaa
 vain muutamaan muuttujaan.
 
-
 \textcite{Ardimento-2017} käyttivät myös tukivektorikoneita mallissa, joka
 ennustaa bugeja nopeasti tai hitaasti korjattavaiksi sen tiedon perusteella,
 jota on käytettävissä tiketin avaushetkellä. Aineisona käytettiin kolmea avoimen
@@ -198,9 +243,24 @@ Kyseisellä aineistolla evoluutioalgoritmi tuotti paremman mallin kuin
 lineaariseen regressioon, kNN-algoritmi tai Random Forest -algoritmi. Mallin
 etuna useisiin muihin voinee pitää sitä, että luokitteluasteikollisten
 aikaikkunoiden sijaan ennusteet ovat jatkuva-asteikollisia.
-
-\parencite[][Esim.]{Lamkanfi-2012,ardimento-2020,lee-2020}
 %,Ardimento-2020,Lee-2020, ramarao-2016}
+
+\textcite{Sharma-2019} tutkivat bugien korjausaikojen sekä vakavuuden
+ennustamista ja vertailivat useita koneoppimisalgoritmeja. Korjausaikoja
+onnistuttiin ennustamaan parhaiten tukivektoriregressiomallilla, jolla
+\(R^2\)-arvoksi saatiin yli 0.9. Muita käytettyjä algoritmeja olivat lineaarinen
+regressio, sumea regressio ja kNN-regressio. Varsin mielenkiintoisena tuloksena
+heidän aineistossaan bugiraporttien kuvauksista tf-ifd -menetelmällä lasketut
+painoarvot eivät parantaneet mallien tuloksia. Aineistona he käyttivät kahdeksaa
+Mozilla-säätiön ohjelmistoprojektia.
+
+\textcite{Lee-2020} kehittivät syväoppimiseen perustuvan mallin, joka hyödynsi
+bugin korjausaikana syntyvää dynaamista dataa sen korjausajan ennustamiseksi.
+Seitsemään luokkaan (aikaikkunaan) opetettuna  mallin tarkkuus oli 23.5-24.9\%
+(top-2 tarkkuus 39.9-50.1\%). Datan he olivat keränneet Firefox-, Chromium- ja
+Eclipse-projektien bugiraportointijärjestelmistä. Heidän mallinsa on ainoa tähän
+mennessä julkaistu syväoppimiseen perustuva bugien korjausaikoja ennustava
+järjestelmä.
 
 \chapter{Tutkimusaihe/tutkimuskysymys}
 Tutkimuksen tavoitteena on tuottaa lisää tietoa siitä, kuinka bugi-raportin
@@ -212,7 +272,10 @@ voi tehdä arvioita siitä, kuinka kypsä tutkimussuunta on käytännön sovellu
 kannalta, ja mihin suuntaan huomio kannattaisi kiinnittää mallien kehittämisen
 kannalta.
 
-\chapter{Tutkimusstrategia/metodi ja sen valintaperusteet}
+% Kilpailevat päämäärät: halutaanko tunnistaa hitaat vai nopeat bugit?
+% Pienempien aineistojen ongelma, tarttuuko liiaksi yhden organisaation
+% prosessiin?
+\chapter{Tutkimusmetodi ja aineisto}
 Tutkimusprosessin alussa on tarkoitus perehtyä syvällisesti käytettyyn malliin
 \parencite{riivo-2016}, jotta tutkijalle syntyy sen tarjoamista
 mahdollisuuksista ja rajoista. Tärkeää on tietää esimerkiksi, onko lähtödatan
@@ -229,50 +292,58 @@ tutkimuksiin. Saadut tulokset ovat luonteeltaan kvantitatiivisia.
 Tutkimusen kokeellinen osuus on siis luonteeltaan tiedonlouhimis- ja
 koneoppimistehtävä.
 
-% \chapter{Aineiston keruun suunnittelu}
+\section{Aineisto}
+Tutkimuksen aineisona on GHTorrent-projektin \footnote{https://ghtorrent.org/}
+\parencite{Gousi13} keräämä relaatiotietokanta GitHub-palveluun tallennetuista
+avoimesti saatavilla olevista projekteista. Tietokantaan on tallennettu
+projekteihin liittyen tuote- ja prosessidataa; projekteista on kerätty muun
+muassa tiedot versiohistoriaa kuvaavista commit-tapahtumista, kehittäjien
+luomista pull request -muutosehdotuksista ja kaikkien käyttäjien luomista
+issue-ketjuista. Issues on GitHubin keskustelupohjainen työkalu, mikä soveltuu
+tehtävienhallintaan ja bugien seurantaan.
+
+GHTorrent-tietokantaan kerätty data on peräisin GitHubin tarjoamasta
+REST-ohjelmointirajapinnasta \footnote{https://docs.github.com/en/rest}
+\parencite{Gousi13}. GHTorrent-aineiston suurimpana etuna voi pitää sen suurta
+kokoa ja heterogeenisyyttä. GitHub on vakiinnuttanut asemansa suosituimpana
+alustana avoimen lähdekoodin projektien hallintaan, joten sieltä kerätyn tiedon
+voisi olettaa edustavan hyvin kattavaa kuvaa avoimen lähdekoodin projekteihin
+liittyvistä ilmiöistä, kuten kehittäjien yhteistyöstä, ohjelmistojen
+elinkaaresta ja niiden laajuudesta. Useimmat bugien korjausaikaa ennustavat
+mallit ovat opetettu ja testattu alle kymmenen suuren ohjelmiston
+bugiseurantajärjestelmästä saadulla datalla. GitHubissa taas eri kokoisia
+repositorioita on miljoonia.
+
+%  Miksi ei vaan itse keräis tätä samaa dataa?
+
+
+% Tutkimuksen aineistonhankinta jäljittelee aiempaa tutkimusta
+% \parencite{riivo-2016}, laajentaen sitä päivitetyllä datalla.
+% oheismateriaalina julkaistu data ja lähdekoodi. Alkuperäinen data on saatu
+% GHTorrent-projektin \parencite{Gousi13} keräämän datasetin pohjalta.
+% GHTorrent-projekti kerää julkisesti saatavilla olevaa dataa Github-palvelusta
+% löytyvistä projekteista. %Lähteitä? Projektiin kerättyä dataa on käytetty
+% aiemmin useissa tutkimuksissa. Datasta on poistettu käyttäjänimet ja
+% sähköpostiosoitteet tietosuoja-asetusten johdosta.
+
+% Jos tarpeellista ja mahdollista, voi olemassa olevaa aineistoa laajentaa
+% käyttämällä hyväksi GHTorrentin tarjoamaa dataa. Alkuperäisessä aineistossa on
+% dataa noin kahden vuoden ajalta, kun nykyään projektissa on dataa kuuden
+% vuoden ajalta.
+
+% ALkuperäiseen lähdekoodiin ei ole liitetty mitään tekijänoikeuslisenssiä,
+% joten lupa koodin uudelleenkäyttöön ja muokkaamiseen kysyttiin
+% henkilökohtaisesti sähköpostitse.
+
 % - mitä, keneltä, milloin, miten
 % - ml. eettiset näkökohdat (hyvä tieteellinen käytäntö jota noudatetaan,
 %   tietosuoja, tieteellisen tutkimuksen rekisteriseloste)
-\chapter{Aineisto}
-Lähtökohtana aineistolle on aiemman tutkimuksen \parencite{riivo-2016}
-oheismateriaalina julkaistu data ja lähdekoodi. Alkuperäinen data on saatu
-GHTorrent-projektin \parencite{Gousi13} keräämän datasetin pohjalta.
-GHTorrent-projekti kerää julkisesti saatavilla olevaa dataa Github-palvelusta
-löytyvistä projekteista. %Lähteitä?
-Projektiin kerättyä dataa on käytetty aiemmin useissa
-tutkimuksissa. Datasta on poistettu käyttäjänimet ja sähköpostiosoitteet
-tietosuoja-asetusten johdosta.
-
-Jos tarpeellista ja mahdollista, voi olemassa olevaa aineistoa laajentaa
-käyttämällä hyväksi GHTorrentin tarjoamaa dataa. Alkuperäisessä aineistossa on
-dataa noin kahden vuoden ajalta, kun nykyään projektissa on dataa kuuden vuoden
-ajalta.
-
-ALkuperäiseen lähdekoodiin ei ole liitetty mitään tekijänoikeuslisenssiä, joten
-lupa koodin uudelleenkäyttöön ja muokkaamiseen kysyttiin henkilökohtaisesti
-sähköpostitse.
 % - kuvaa konkreetilla tasolla miten ja milloin aineisto kerätään, käsitellään,
 %   talletetaan, arkistoidaan/hävitetään
 % - Aikataulu! \chapter{Aineiston analyysi} 
 % - analyysin kuvaus, millä menetelmällä analyysi tehdään
 
-%\chapter{Tulokset} 
-%
-%\chapter{Johtopäätökset}
-\chapter{Aikataulu}
-\begin{itemize}
-  \item Maaliskuu: Teoreettisen viitekehyksen vahvistaminen, kirjallisuuteen
-  perehtyminen.
-  \item Huhtikuu:  Kirjallisuuteen perehtyminen, aineistoon perehtyminen.
-  \item Toukokuu:  Aineistoon perehtyminen, kirjallisuuskatsauksen
-  kirjoittaminen.
-  \item Kesäkuu:   Ohjelmointi, datan käsittely.
-  \item Heinäkuu:  Tulosten kerääminen. Tehdyn työn kirjaaminen.
-  \item Elokuu:    Tulosten analysointi.
-  \item Syyskuu:   Tulosten kirjaaminen.
-  \item Lokakuu:   Tutkielman viimeistely
-  \item Marraskuu: Palautus.
-\end{itemize}
-
+\chapter{Tulokset} 
+\chapter{Johtopäätökset}
 \printbibliography
 \end{document}

@@ -383,60 +383,61 @@
     \pagenumbering{roman}
     \newpage%
     % %%% METADATA PAGE
-    % \noindent%
-    % \iflanguage{finnish}{%
-    %   \textbf{Tekij\"a\ifthenelse{\value{gradu@author@count}>1}{t}{}:} %
-    %   \gradu@author@render{,\space}{\space ja\space}\par%
-    % }{%
-    %   \noindent\textbf{Author\ifthenelse{\value{gradu@author@count}>1}{s}{}:} %
-    %   \gradu@author@render{,\space}{,\space and\space}\par%
-    % }%
-    % \iflanguage{finnish}{%
-    %   \noindent\textbf{Yhteystiedot:} %
-    %   \gradu@contactinformation@render{,\space}{\space ja\space}\par%
-    % }{%
-    %   \noindent\textbf{Contact information:}
-    %   \gradu@contactinformation@render{,\space}{,\space and\space}\par%
-    % }%
-    % \ifthenelse{\NOT\boolean{gradu@bsc}\OR\value{gradu@supervisor@count}>0}{%
-    %   \noindent{%
-    %     \textbf{%
-    %       \iflanguage{finnish}{%
-    %         Ohjaaja\ifthenelse{\value{gradu@supervisor@count}>1}{t}{}:%
-    %       }{%
-    %         Supervisor\ifthenelse{\value{gradu@supervisor@count}>1}{s}{}:%
-    %       }%
-    %     }\space%
-    %     \iflanguage{finnish}{%
-    %       \gradu@supervisor@render{,\space}{\space ja\space}\par%
-    %     }{%
-    %       \gradu@supervisor@render{,\space}{,\space and\space}\par%
-    %     }%
-    %   }\par%
-    % }{}%
-    % \iflanguage{finnish}{%
-    %   \noindent\textbf{Ty\"on nimi:} {\let\\\relax \gradu@title\par}%
-    %   \noindent\textbf{Title in English:} \gradu@translatedtitle\par%
-    %   \noindent\textbf{Ty\"o:} {%
-    %     \gradu@HeadToUpper\gradu@type%
-    %   }\par%
-    %   \gradu@bsc@optional{Opintosuunta}{studyline}%
-    %   \noindent\textbf{Sivum\"a\"ar\"a:} \gradu@MainPageCount+\gradu@AppPageCount\par%
-    %   \noindent\textbf{Tiivistelm\"a:} \gradu@tiivistelma\par%
-    %   \noindent\textbf{Avainsanat:} \gradu@avainsanat\par%
-    %   \noindent\textbf{Abstract:} \gradu@abstract\par%
-    %   \noindent\textbf{Keywords:} \begin{foreignlanguage}{english}\gradu@keywords\end{foreignlanguage}\par%
-    % }{%
-    %   \noindent\textbf{Title:} {\let\\\relax \gradu@title\par}%
-    %   \noindent\textbf{Ty\"on nimi:} \gradu@translatedtitle\par%
-    %   \noindent\textbf{Project:} \gradu@type\par%
-    %   \gradu@bsc@optional{Study line}{studyline}%
-    %   \noindent\textbf{Page count:} \gradu@MainPageCount+\gradu@AppPageCount\par%
-    %   \noindent\textbf{Abstract:} \gradu@abstract\par%
-    %   \noindent\textbf{Keywords:} \gradu@keywords\par%
-    %   \noindent\textbf{Suomenkielinen tiivistelm\"a:} \gradu@tiivistelma\par%
-    %   \noindent\textbf{Avainsanat:} \gradu@avainsanat\par%
-    % }%
+    \noindent%
+    \iflanguage{finnish}{%
+      \textbf{Tekij\"a\ifthenelse{\value{gradu@author@count}>1}{t}{}:} %
+      \gradu@author@render{,\space}{\space ja\space}\par%
+    }{%
+      \noindent\textbf{Author\ifthenelse{\value{gradu@author@count}>1}{s}{}:} %
+      \gradu@author@render{,\space}{,\space and\space}\par%
+    }%
+    \iflanguage{finnish}{%
+      \noindent\textbf{Yhteystiedot:} %
+      \gradu@contactinformation@render{,\space}{\space ja\space}\par%
+    }{%
+      \noindent\textbf{Contact information:}
+      \gradu@contactinformation@render{,\space}{,\space and\space}\par%
+    }%
+    \ifthenelse{\NOT\boolean{gradu@bsc}\OR\value{gradu@supervisor@count}>0}{%
+      \noindent{%
+        \textbf{%
+          \iflanguage{finnish}{%
+            Ohjaaja\ifthenelse{\value{gradu@supervisor@count}>1}{t}{}:%
+          }{%
+            Supervisor\ifthenelse{\value{gradu@supervisor@count}>1}{s}{}:%
+          }%
+        }\space%
+        \iflanguage{finnish}{%
+          \gradu@supervisor@render{,\space}{\space ja\space}\par%
+        }{%
+          \gradu@supervisor@render{,\space}{,\space and\space}\par%
+        }%
+      }\par%
+    }{}%
+    \iflanguage{finnish}{%
+      \noindent\textbf{Ty\"on nimi:} {\let\\\relax \gradu@title\par}%
+      \noindent\textbf{Title in English:} \gradu@translatedtitle\par%
+      \noindent\textbf{Ty\"o:} {%
+        \gradu@HeadToUpper\gradu@type%
+      }\par%
+      \gradu@bsc@optional{Opintosuunta}{studyline}%
+      \noindent\textbf{Sivum\"a\"ar\"a:} \gradu@MainPageCount+\gradu@AppPageCount\par%
+      % \noindent\textbf{Tiivistelm\"a:} \gradu@tiivistelma\par%
+      \noindent\textbf{Avainsanat:} \gradu@avainsanat\par%
+      % \noindent\textbf{Abstract:} \gradu@abstract\par%
+      \noindent\textbf{Keywords:} \begin{foreignlanguage}{english}\gradu@keywords\end{foreignlanguage}\par%
+    }
+    {%
+      \noindent\textbf{Title:} {\let\\\relax \gradu@title\par}%
+      \noindent\textbf{Ty\"on nimi:} \gradu@translatedtitle\par%
+      \noindent\textbf{Project:} \gradu@type\par%
+      \gradu@bsc@optional{Study line}{studyline}%
+      \noindent\textbf{Page count:} \gradu@MainPageCount+\gradu@AppPageCount\par%
+      % \noindent\textbf{Abstract:} \gradu@abstract\par%
+      \noindent\textbf{Keywords:} \gradu@keywords\par%
+      % \noindent\textbf{Suomenkielinen tiivistelm\"a:} \gradu@tiivistelma\par%
+      \noindent\textbf{Avainsanat:} \gradu@avainsanat\par%
+    }%
     %%% POSTPROCESSING
     \def\gradu@f##1{%
       \expandafter\gdef\csname##1\endcsname{\gradu@toolate}%
