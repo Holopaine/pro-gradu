@@ -61,13 +61,19 @@ lisätutkimuselle on tarvetta mikäli näitä malleja halutaan soveltaa käytän
 osana.
 
 \chapter{Ohjelmistokehitys avoimen lähdekoodin projekteissa}
-% - Ohjelmistokehitys/OSS-projektit
-%   * Ylläpito
-\section{Bugien seuranta}
-%   * Bugit
-%     - Korjaus
+\begin{itemize}
+  \item Ohjelmistokehitys / OSS-projektit
+  \item GitHub / Git
+  \item Elinkaari / Ylläpito
+\end{itemize}
 
-\chapter{Tiedonlouhinta}
+\section{Bugien seuranta}
+\begin{itemize}
+  \item Bugit
+  \item Raportointi - Korjaus
+\end{itemize}
+  
+\chapter{Tiedonlouhinta ja koneoppiminen}
 % - Tiedonlouhinta
 %   * Menetelmät, arviointi.
 % - Tekstin prosessointi tiedonlouhinnassa.
@@ -75,11 +81,17 @@ osana.
 %   estimation.
 
 % Projektikohtiaset vs. yleistettävät featuret?
-
-Tiedonlouhinnan voi määritellä oleellisen tiedon ja kiinnostavien kaavojen
-löytämiseksi suuresta datamassasta \parencite[][8]{han-data_mining}. Alalla
-käytetään monenlaisia tilastotieteen, matematiikan ja tietojenkäsittelyn
-tekniikoita \parencite{clifton-2019}. 
+Moderni yhteiskunta tuottaa ja tallentaa dataa jatkuvalla virralla. Pelkkä data
+itsessään ei vielä ole tietoa tai tietämystä. Jotta siitä saataisiin
+ymmärretäävää ja kiteytynyttä tietoa, se vaatii tulkintaa ja yhdistämistä muuhun
+ympäristössä olevaan tietoon. % Pitäiskö keksiä jotain omaperäisempää :D
+Informaatiojärjestelmiin kerättyä, ja niiden itse
+keräämää, dataa on usein niin paljon, ettei sitä ole mahdollista käsitellä
+manuaalisin menetelmin (ääriesimerkkinä Big data). Tiedonlouhinnan voi
+määritellä oleellisen tiedon ja kiinnostavien kaavojen löytämiseksi suuresta
+datamassasta \parencite[][8]{han-data_mining}. Alalla käytetään monenlaisia
+tilastotieteen, matematiikan ja tietojenkäsittelyn tekniikoita
+\parencite{clifton-2019}. 
 
 Ohjelmistokehityksessä hyödynnetään usein hajautettuja
 versiohallintajärjestelmiä kuten Git, sekä internet-palveluja kuten Github ja
@@ -91,6 +103,19 @@ ohjelmistokehityksessä syntyvän strukturoidun ja tekstimuotoisen datan
 käsittelyyn. Tutkimuksen kohteita ovat esimerkiksi koodin mätäneminen, muutosten
 riippuvuus, bugien ennakointi ja syyt, sekä kehittäjien yhteistyö.
 \parencite{guemes-pena-emerging_topics}
+
+\section{Tekstin prosessointi tiedonlouhinnassa}
+ \begin{itemize}
+   \item Stemmaus
+   \item TF-IDF
+   \item Haasteet
+ \end{itemize}
+\section{Random tree ja Random Forest}
+\begin{itemize}
+  \item Algoritmien kuvaus
+  \item Arviointi
+  \item Toimivuus aiemmissa sovelluksissa
+\end{itemize}
 
 \section{Bugien korjausajan arviointi}
 
@@ -275,7 +300,7 @@ kannalta.
 % Kilpailevat päämäärät: halutaanko tunnistaa hitaat vai nopeat bugit?
 % Pienempien aineistojen ongelma, tarttuuko liiaksi yhden organisaation
 % prosessiin?
-\chapter{Tutkimusmetodi ja aineisto}
+\chapter{Aineisto ja metodi}
 Tutkimusprosessin alussa on tarkoitus perehtyä syvällisesti käytettyyn malliin
 \parencite{riivo-2016}, jotta tutkijalle syntyy sen tarjoamista
 mahdollisuuksista ja rajoista. Tärkeää on tietää esimerkiksi, onko lähtödatan
@@ -312,7 +337,28 @@ liittyvistä ilmiöistä, kuten kehittäjien yhteistyöstä, ohjelmistojen
 elinkaaresta ja niiden laajuudesta. Useimmat bugien korjausaikaa ennustavat
 mallit ovat opetettu ja testattu alle kymmenen suuren ohjelmiston
 bugiseurantajärjestelmästä saadulla datalla. GitHubissa taas eri kokoisia
-repositorioita on miljoonia.
+repositorioita on miljoonia. Yksi haaste GitHubista kerätyssä datassa verrattuna
+varsinaisista buginseurantaohjelmista kerättyyn dataan on se, että GitHubin
+Issues-ominaisuus jättää varsin vapaat kädet bugien käsittelyprosessille. Issues
+ei myöskään rajoitu vain bugien seurantaan, vaan sitä käytetään muidenkin
+ohjelmistoprojektin tehtävien hallintaan. Eri tyyppisiä tehtäviä voi erotella
+niihin liitettävillä nimikkeilä (\textit{label}), ja yksi GitHubin tarjoamista
+vakionimikkeistä onkin "Bug". Projekteilla on kuitenkin mahdollisuus kustomoida
+käytettäviä nimikkeitä omien tarpeidensa mukaan esimerkiksi hienosyisempään
+bugien jaotteluun tai erilaisten tehtävien kuvaamiseksi. Nimikkeiden käyttö ei
+myöskään ole pakollista, jolloin voi olla mahdotonta selvittää onko jokin
+tehtävä avattu bugin korjausta vai jotain muuta kehitystyötä varten.
+Projekteilla on vaihtelevia buginkorjausprosesseja, ja niiden kulkua ei
+välttämättä pysty seuraamaan pelkästään GitHubista löytyvän datan perusteella.
+Siksi lienee hyvin vaikeaa antaa yleistä kaaviota siitä, mitä tapahtuu
+bugiraportin avaamisen ja sen sulkemisen välillä. Esimerkiksi
+Bugzilla-järjestelmässä bugeilla ja niiden käsittelyllä on yksiselitteisempi
+vuokaavio.
+
+\begin{verbatim}
+Tähän aineiston numeerista kuvausta, käsittelyn/filtteroinnin 
+kuvaus, sekä vertailu muihin käytettyihin aineistoihin.
+\end{verbatim}
 
 %  Miksi ei vaan itse keräis tätä samaa dataa?
 
