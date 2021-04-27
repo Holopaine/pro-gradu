@@ -60,12 +60,142 @@ ristiriitaisia, eivätkä aina kovinkaan tarkkoja. Vaikuttaisi siis siltä, ett�
 lisätutkimuselle on tarvetta mikäli näitä malleja halutaan soveltaa käytännössä
 osana.
 
+% Shaikh-2017 -> alkulähteet: Kehittäjät eivät ole sopimuksin sitoutineita
+% organisaatioon, vaan motivaatio ohjelmointiin löytyy muista tekijöistä
+% (ulkoinen ja sisäinen). Myös tehtävät ovat kehittäjien itsensä valitsemia. 
+
 \chapter{Ohjelmistokehitys avoimen lähdekoodin projekteissa}
-\begin{itemize}
-  \item Ohjelmistokehitys / OSS-projektit
-  \item GitHub / Git
-  \item Elinkaari / Ylläpito
-\end{itemize}
+Avoimen lähdekoodin ohjelmistoilla tarkoitetaan tietokoneohjelmistoa, jonka
+lähdekoodi on avoimesti saatavilla ja siihen on liitetty avoimen lähdekoodin
+lisenssi, joka salli ohjelman ja sen lähdekoodin vapaan käytön muokkaamisen ja
+uudelleenjakelun. Avoimen lähdekoodin ohjelmistoja kehitetään usein
+yhteisöllisesti vapaaehtoisvoimin. Kehitykseen osallisuu ydinhenkilöiden lisäksi
+loppukäyttäjät vaihtelevin panoksin. Motivaation lähteinä projekteihin
+osallistujilla voi olla esimerkiksi työstä itsestään saatu sisäisesti
+motivoitunut tyydytys, velvollisuudentunto yhteisöä kohtaan, tai siitä saatu
+rahallinen korvaus \parencite{Lakhani-2005}. %
+Myös ohjelmistoyritykset voivat osallistua avoimen lähdekoodin ohjelmistojen
+kehitykseen. Viime aikoina perinteiset ohjelmistoalan yritykset ovat alkaneet
+julkaista ohjelmiaan avoimen lähdekoodin lisenssien alla.
+
+(Perusteet sille miksi kehityksen ohjaus on tärkeää laadun ja virheiden
+kannalta. Tarvitaanko vertailua teollisuusprojektien vastaaviin käytäntöihin?)
+
+%Erilaiset organisatiot: Hierarkinen ja keskitetty (Linux), modulaarinen jne...
+Hyvin menestyneet avoimen lähdekoodin ohjelmistoprojektit houkuttelevat paljon
+osallistujia. Jossain vaiheessa kasvaneen projektin ohjaamisen, päätöstenteon ja
+vastuiden jakamisen tueksi syntyy hallinnan järjestelmä. %
+% Tarvitaanko esimerkkejä päätöksistä tai jotain muuta. DE LAAT!!
+\textcite{Laat-2007} erittelee kuusi kategoriaa, joihin avoimen lähdekoodin
+ohjelmistoprojektien hallinnan työkalut voidaan jakaa.%
+\textbf{Modularisoinnilla} tarkoitetaan ohjelmiston jakamista pienempiin
+itsenäisiin osiin. Samaan aikaan voidaan kehittää myös saman ohjelmiston eri
+versioita.%
+\textbf{Rooleja jakamalla} voidaan osallistujille antaa eri tasoisia
+osallistumisoikeuksia pelkästä tarkkailuoikeudesta lähdekoodin vapaaseen
+muokkausoikeuteen. Oikeuksien lisäksi roolien perusteella jaetaan myös
+vastuualueita. Vastuualueen perusteella jaettuja rooleja voi olla esimerkiksi
+kääntäjä ja ylläpitäjä.%
+Roolit jakautuvat myös päätöstenteon mukaan, jolloin hallinnan työkaluna on
+\textbf{päätöksenteon delegointi} Esimerkiksi projektilla voi olla yksi
+päävetäjä, joka tekee koko ohjelmistoa koskevia päätöksia, sekä useita
+ylläpitäjiä, jotka vastaavat itsenäisten moduulien vetämisestä. Koko projektia
+ja yhteisöä koskevien päätösten lisäksi de Laat näkee keskeiseksi
+päätöskohteeksi uuden lähdekoodin hyväskynnän. Päätöksentekoa voidaan keskittää
+tai hajauttaa. Keskitetyssä mallissa yksittäiset vetäjät tekevät päätökset
+lähdekoodin hyväskynnästä, kun taas hajautetussa mallissa kehittäjät päättävät
+yhdessä mukaan otettavasta lähdekoodista. Päätöksenteon tukena voidaan käyttää
+esimerkiksi vertaisarviointia ja äänestystä.%
+
+Luomalla yhteisöön kriteerit sille kuka voi osallistua ja ehdottaa muutoksia
+lähdekoodiin, voidaan pyrkiä parantamaan ohjelmiston laatua ja luotettavutta.
+\textbf{Koulutuksella ja indoktrinaatiolla} pyritään tarjoamaan halukkaille
+osallistujille mahdollisuus kehittää omaa osaamistaan sille tasolle, että se
+ylittää projektin asettamat osallistumiskriteerit.%
+Ohjelmiston ja projektin kehitystehtävien ja raportoinnin
+\textbf{formalisointiin} on kehitetty työkaluja, joita avoimen lähdekoodin
+projekteissa on otettu laajasti käyttöön. Vakiintuneet tavat ja työkalut
+helpottavat suurten kokonaisuuksien hallintaa, sekä osallistujien siirtymistä
+projektien välillä. Avoimen lähdekoodin projekteissa tärkeimpiä työkaluja ovat
+Git ja GitHub. Git on hajautettu versiohallintajärjestelmä, joka tarjoaa
+työkaluja kehittäjille kuin ylläpitäjille. GitHub on alusta Gitiä käyttäville
+projekteille, joka koodin säilyttämisen lisäksi tarjoaa paljon työkaluja
+yhteisölliseen kehittämiseen ja raportointiin.%
+Usein pienemmissä projekteissa projektin aloittaja pitää itsellään johtoaseman
+ja päätäntävallan projektin suunnasta. Suureksi kasvaneissa projekteissa
+vetäjien valinta voidaan hoitaa demokraattisemmin, jolloin yhteisön jäsenet
+voivat vaikuttaa projektin johtohahmoihin. Projektin vetäjäksi voidaan valita
+yksi henkilö tai useasta jäsenestä koostuva ryhmä. \textbf{Demokraattisen tai
+autokraattisen} hallintotavan valinnalla voisi ajatella olevan vaikutusta
+päätkösenteon nopeuteen ja osaamiseen, ulkopuolisiin suhteisiin, roolien
+jakamisen tärkeyteen sekä ohjelmiston hyväskyntään muissa yhteisöissä.%
+
+Mainituista kategorioista kaikkia voi hyödyntää samassa projektissa, ja jotkin
+työkalut voikin nähdä vaikuttavan projektin hallintaan useamman kategorian
+näkökulmasta.
+
+
+% Ohjelmistokehitystyössä ketterillä menetelmillä pyritään iteratiivisin ja
+% joustavin prosessein nopeaan julkaisutahtiin, jatkuvaan kehitykseen ja kykyyn
+% vastata muutostarpeisiin. Suosituimmat ketterän kehityksen prosessimallit,
+% kuten Scrum ja Lean, sopivat hyvin kaupallisiin ohjelmistoprojekteihin, joissa
+% on vakaa, palkatuista jäsenistä koostuva, kehitysorganisaatio.
+
+(Laadun hallinta)
+
+(Ehkä oma kappale siitä mitä tapahtuu ennen vertaisarviointia?)
+
+Kun ohjelmiston lähdekoodia muokataan, on usein kyse joko siitä, että ohjelmaan
+tuodaan uusia ominaisuuksia lisäämällä uutta koodia, tai korjataan
+ohjelmointivirheitä muokkaamalla olemassa olevaa ohjelmakoodia (\textit{patch}).
+Ennen ohjelmointia kehitysalustalle luodaan usein tiketti, jossa kuvataan
+kehitettävä ominaisuus tai ohjelmistossa havaittu virhe. Tiketin yhteyteen voi
+myös liittyä keskustelua kyseisestä tehtävästä.%
+Tehtävätiketin verifiointi, luokittelu, priorisointi ja delegointi tapahtuu
+triage-vaiheessa.%
+Verifioinnin tarkoituksena on selvittää, onko raportoitu bugi toistettavissa tai
+onko virhe kyseisen ohjelman sijaan jossain muualla, esimerkiksi käyttäjän
+virhe.%
+Luokittelemalla voidaan tehtävien osoittaa liittyvän tiettyyn ohjelmiston osaan,
+jolloin vastuu tehtävän hoitamisesta voidaan siirtää kyseistä osaa kehittäville
+henkilöille.%
+Priorisoinnilla pyritään järjestämään tehtävät niiden tärkeyden ja kriittisyyden
+perusteella. Korkeamman prioriteetin tehtävät halutaan hoitaa ennen pienemmän
+prioriteetin tehtäviä.%
+Koska avoimen lähdekoodin projekteihin osallistutaan usein
+vapaa-ajalla, tehävien delegointi tapahtuu usein kehittäjien omien
+mielenkiinnon- ja osaamiskohteiden sekä käytettävissä olevien resurssien
+perusteella.%
+Triagen voi hoitaa joko yksi projektiin perehtynyt kehittäjä, tai ryhmä
+kehittäjiä. 
+
+Keskeisimpiä menetelmiä ohjelmiston laadun parantamiseksi ja virheiden
+korjaamiseksi avoimen lähdekoodin projekteissa on veraisarviointi.
+Vertaisarvioinnissa ohjelmiston kehittäjät katselmoivat ja testaavat toisten
+kehittäjien lisättäväksi ehdottamaa koodia. Vertaisarvioinnin tavoitteena on
+löytää bugeja ja muita virheitä mahdollisimman aikaisin. Koska virheiden
+etsiminen ja niiden raportointi on osa vertaisarviointia, myös ohjelmien
+loppukäyttäjät osallistuvat usein vertaisarviointiin raportoimalla löytämiään
+bugeja, vaikka eivät itse muuten osallistuisi niiden korjaamiseen tai
+ohjelmiston kehttämiseen. Bugien raporointi- ja raporttien käsittelykäytänteet
+vaihtelevat projektien välillä. \textcite{Wang-2015} havaitsivat Mozilla- ja
+Python -projekteja vertaillessaan, että Mozilla-projektiin raportoidut bugit
+kuvattiin usein käyttökokemuksen avulla, kun taas Pythonin bugiraportit
+sisältivät monesti raportoijan kirjoittaman korjauspaketin lähdekoodiin.
+Raporttien verifioinnissa ja kommentoinnissa nousi Mozilla-projektissa esille
+riittävän tarkan informaation kerääminen, ja Python-projektissa keskityttiin
+enemmän korjauspaketin katselmointiin ja testaukseen. Mozilla-projektissa
+bugiraportit kirjattiin Bugzilla-bugiseurantaohjelmaan ja Python projektissa
+Roundup-ohjelmaan. Mozilla-projektissa raporttien luokittelu oli tarkempaa ja
+käytettäviä nimikkeitä (\textit{label}) oli huomattavasti enemmän.
+\parencite{Wang-2015} 
+
+GitHubin tarjoama työkalu bugiraporttien kirjaamiselle (\textit{issues}) on
+melko joustava, ja nimikkeet ovat sen ainoa keino luokitteluun ylläpitäjien
+määräämien kenttien perusteella. Sen lisäksi issues-työkalua käytetään muidenkin
+kehitystehtävien kirjaamiseen.  Onkin siis syytä olettaa, että tässä
+tutkimuksessa käytettävien avoimen lähdekoodin ohjelmistoprojektien välillä on
+eroja bugien raportoinnissa ja vertaisarvioinnin käytännöissä.
 
 \section{Bugien seuranta}
 \begin{itemize}
@@ -85,13 +215,12 @@ Moderni yhteiskunta tuottaa ja tallentaa dataa jatkuvalla virralla. Pelkkä data
 itsessään ei vielä ole tietoa tai tietämystä. Jotta siitä saataisiin
 ymmärretäävää ja kiteytynyttä tietoa, se vaatii tulkintaa ja yhdistämistä muuhun
 ympäristössä olevaan tietoon. % Pitäiskö keksiä jotain omaperäisempää :D
-Informaatiojärjestelmiin kerättyä, ja niiden itse
-keräämää, dataa on usein niin paljon, ettei sitä ole mahdollista käsitellä
-manuaalisin menetelmin (ääriesimerkkinä Big data). Tiedonlouhinnan voi
-määritellä oleellisen tiedon ja kiinnostavien kaavojen löytämiseksi suuresta
-datamassasta \parencite[][8]{han-data_mining}. Alalla käytetään monenlaisia
-tilastotieteen, matematiikan ja tietojenkäsittelyn tekniikoita
-\parencite{clifton-2019}. 
+Informaatiojärjestelmiin kerättyä, ja niiden itse keräämää, dataa on usein niin
+paljon, ettei sitä ole mahdollista käsitellä manuaalisin menetelmin
+(ääriesimerkkinä Big data). Tiedonlouhinnan voi määritellä oleellisen tiedon ja
+kiinnostavien kaavojen löytämiseksi suuresta datamassasta
+\parencite[][8]{han-data_mining}. Alalla käytetään monenlaisia tilastotieteen,
+matematiikan ja tietojenkäsittelyn tekniikoita \parencite{clifton-2019}. 
 
 Ohjelmistokehityksessä hyödynnetään usein hajautettuja
 versiohallintajärjestelmiä kuten Git, sekä internet-palveluja kuten Github ja
