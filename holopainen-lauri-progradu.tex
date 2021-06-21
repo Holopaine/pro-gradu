@@ -1,8 +1,8 @@
 \documentclass[utf8]{gradu3}
-\usepackage{graphicx} % kuvien mukaan ottamista varten
-\usepackage{amsmath} % hyödyllinen jos tekstisi sisältää matikkaa,
+% \usepackage{graphicx} % kuvien mukaan ottamista varten \usepackage{amsmath} %
+% hyödyllinen jos tekstisi sisältää matikkaa,
                      % ei pakollinen
-\usepackage{booktabs} % hyvä kauniiden taulukoiden tekemiseen
+% \usepackage{booktabs} % hyvä kauniiden taulukoiden tekemiseen
 
 % HUOM! Tämän tulee olla viimeinen \usepackage koko dokumentissa!
 \usepackage[bookmarksopen,bookmarksnumbered,linktocpage]{hyperref}
@@ -17,7 +17,7 @@
 \tiivistelma{Tiivistelmä}
 \abstract{}
 
-\author{Lauri Holopainen}
+\author{Lauri Holopainenn}
 \contactinformation{\texttt{lauri.m.s.holopainen@jyu.fi}}
 % jos useita tekijöitä, anna useampi \author-komento 
 \supervisor{Ville Isomöttönen}
@@ -65,32 +65,121 @@ osana.
 % (ulkoinen ja sisäinen). Myös tehtävät ovat kehittäjien itsensä valitsemia. 
 
 \chapter{Ohjelmistokehitys avoimen lähdekoodin projekteissa}
-Avoimen lähdekoodin ohjelmistoilla tarkoitetaan tietokoneohjelmistoa, jonka
-lähdekoodi on avoimesti saatavilla ja siihen on liitetty avoimen lähdekoodin
-lisenssi, joka salli ohjelman ja sen lähdekoodin vapaan käytön muokkaamisen ja
-uudelleenjakelun. Avoimen lähdekoodin ohjelmistoja kehitetään usein
-yhteisöllisesti vapaaehtoisvoimin. Kehitykseen osallisuu ydinhenkilöiden lisäksi
-loppukäyttäjät vaihtelevin panoksin. Motivaation lähteinä projekteihin
-osallistujilla voi olla esimerkiksi työstä itsestään saatu sisäisesti
-motivoitunut tyydytys, velvollisuudentunto yhteisöä kohtaan, tai siitä saatu
-rahallinen korvaus \parencite{Lakhani-2005}. %
-Myös ohjelmistoyritykset voivat osallistua avoimen lähdekoodin ohjelmistojen
-kehitykseen. Viime aikoina perinteiset ohjelmistoalan yritykset ovat alkaneet
-julkaista ohjelmiaan avoimen lähdekoodin lisenssien alla.
+Avoimen lähdekoodin ohjelmia hyödynnetään paljon osana tietojärjestelmiä.
+Esimerkiksi LAMP-kokoonpano on suosittu web-ohjelmien kehityksessä. Osa avoimen
+lähdekoodin ohjelmistoista, kuten Gimp \footnote{https://www.gimp.org/}, on
+tarkoitettu suoraan loppukäyttäjälle. Avoimen lähdekoodin ohjelmistot ovat
+yhdistetty johonkin lisenssiin, joka määrittää niiden käyttö- ja jakeluehdot.
 
-(OSS projektien kehityskaari. Erilaiset lähtökohdat esim yrityslähtöisillä ja
-harrasteluprojekteilla.)
+Avoimen lähdekoodin ohjelmistojen käyttöä edistävä Open Source Initiative (OSI)
+-järjestö on määritellyt kriteerit avoimen lähdekoodin ohjelmille ja
+lisensseille \parencite{Osd}. Kriteerien täyttävää ohjelmaa ja sen lähdekoodia
+saa vapaasti jakaa, muokata ja käyttää sellaisenaan tai osana muita
+ohjelmistoja. Vapaan lähdekoodin ohjelmiston lisenssi ei voi kriteerien mukaan
+rajoittaa ohjelman käyttöä tarkoituksen tai käyttäjän perusteella. Kriteerit
+sallivat ohjelmiston kopioiden myymisen. WhiteSourcen tekmemän tutkimuksen
+mukaan suosituimpia avoimen lähdekoodin lisenssiä olivat Apache 2.0, MIT, ja GPL
+v3 \parencite{Whitesource-2021}.
 
-(Perusteet sille miksi kehityksen ohjaus on tärkeää laadun ja virheiden
-kannalta. Tarvitaanko vertailua teollisuusprojektien vastaaviin käytäntöihin?)
+Ilmaisohjelmat, eli freeware-ohjelmat, eivät usein täytä avoimen lähdekoodin
+ohjelmiston kriteereitä, sillä vaikka niitä saa jakaa maksutta, usein niiden
+lähdekoodia ei ole julkistettu. Myöskin ilmaisohjelmien tekijä tai
+tekijänoikeuksien haltija on rajoittanut ohjelman käyttöä kaupallisissa
+tarkoituksissa.
+\parencite{Corbly-2014}
 
+Avoimen lähdekoodin ohjelmistoja kehitetään usein yhteisöllisesti
+vapaaehtoisvoimin. Kehitykseen osallisuu ydinhenkilöiden lisäksi loppukäyttäjät
+vaihtelevin panoksin. Motivaation lähteinä projekteihin osallistujilla voi olla
+esimerkiksi työstä itsestään saatu sisäisesti motivoitunut tyydytys,
+velvollisuudentunto yhteisöä kohtaan, tai siitä saatu rahallinen korvaus
+\parencite{Lakhani-2005}. Myös ohjelmistoyritykset voivat osallistua avoimen
+lähdekoodin ohjelmistojen kehitykseen. Viime aikoina perinteiset ohjelmistoalan
+yritykset ovat alkaneet julkaista ohjelmiaan avoimen lähdekoodin lisenssien
+alla. (Lähde?)
+
+\section{Projektin kehityskaari}
+Avoimen lähdekoodin ohjelmistoprojektien alullepano voi tapahtua monin eri
+tavoin. \textcite{Conlon-2007} perehtyi nimekkäiden avoimen lähdekoodin
+projektien alkuun, kehittäjäyhteisöön ja johtamiseen. Osa projekteista oli
+aloitettu rakentamalla uutta ohjelmistoa vanhan hylätyn ohjelmiston päälle.
+Muutaman ohjelmiston juuret olivat yliopistoprojekteissa.
+\textit{OpenOffice.org} julkaistiin avoimena lähdekoodina yrityskauppojen
+seurauksena. \textit{MySQL} oli yhtäaikaa sekä avoimen lähdekoodin projekti,
+että kaupallisen yrityksen omistuksessa. \textit{Linux} muuttui yhden henkilön
+projektista avoimen lähdekoodin ohjelmistoksi Usenet-ryhmässä julkaistun
+ilmoituksen myötä. \parencite{Conlon-2007}
+
+Forkkaus, eli projektin haarautuminen useaksi itsenäiseksi projektiksi on myös
+mahdollinen alku uudelle avoimen lähdekoodin projektille. \textcite{Nyman-2013}
+mukaan forkkaus tuo kestävyyttä ja turvaa ohjelmiston jatkuvuudelle ohjelmiston,
+yhteisön ja ekosysteemin tasoilla. Heidän mukaan ohjelmistotasolla forkkaus tuo
+turvaa koodin mätänemistä ja vanhenemista vastaan. Yhteisötasolla projektin
+haarautuminen mahdollistaa itsenäisen projektin luomisen siinä tapauksessa, jos
+alkuperäisen projektin suunta tai vetäjien päätökset eivät miellytä yhteisöä.
+Ekosysteemitasolla forkkaus mahdollistaa \textcite{Nyman-2013} mukaan hylättyjen
+projektien henkiinherättämisen ja parantaa innovaatioiden mahdollisuutta
+projektien ydistämisen ja muokkaamisen kautta. Esimerkiksi Linux jakeluista on
+forkattu lukuisia haaroja, jotka vastaavat erilaisiin tarpeisiin ja
+mieltymyksiin.
+
+\textcite{Laurent-2004} mukaan forkkausta myös pelätään, koska voi hajoittaa
+kehittäjäyhteisön kahtia, kuten kävi Emacs projektille 1993. Vakavimmillaan
+alkuperäinen projekti voidaan hylätä. Näin kävi \textcite{Viseur-2012}
+tutkimuksessa 19\% tapauksista. Laurentin mukaan avoimen lähdekoodin "copyleft"
+lisensseillä pyritään joskus rajoittamaan forkkausta muun muassa vaatimalla
+yhteensopivaa lisenssiä myös haarautuville projekteille. \textcite{Viseur-2012}
+havaintojen mukaan tämä ei kuitenkaan ole erityisen varma tapa, sillä yli puolet
+tutkimuksessa mukana olleista haaroista oli suojattu "copyleft"-lisenssillä.
+Toinen tapa rajoittaa forkkausta on alkuperäisen projektin nimen suojaaminen.
+Tällä tavalla on Apache -projekti säilyttänyt selkeän kehityslinjan. Suljetun
+lähdekoodin projeteissa forkkausta ei juuri tapahdu, sillä ne eivät salli
+lähdekoodin uudelleenkäyttöä toisissa projekteissa \parencite{Conlon-2007}.
+
+Projektin alullepanon jälkeisiä vaiheita ovat vapaaehtoisten haalinta,
+ratkaisujen identifioiminen, kehitys ja testaaminen, vertaisarviointi,
+dokumentointi ja julkaisun hallinta \parencite{Sharma-2002}. Koska
+modernit ohelmistoprojektit ovat luonteeltaan iteratiivisia ja koska uusia
+vapaaehtoisia voi liittyä avoimen lähdekoodin projektin kehitysyhteisöön koska
+vain, voisi näiden vaiheiden nähdä toistuvan ja tapahtuvan ainakin osin
+yhtäaikaa.
+
+Uusien kehittäjien haalimiseksi \textcite{Riehle-2015} esittää projektin
+näkökulmasta kaski väylää aktiivisen etsimisen ja passivisen sisäänvirtauman.
+Aktiivista etsimistä suoritetaan Riehlen mukaan aktiivisella näkyvällä
+viestinnällä asiaankuuluvissa mediakanavissa. Nykyään ohjelmistoalalla toimivien
+suosimat some-väylät voisi nähdä hyvänä väylänä tähän. Passiivista
+vapaaehtoisten haalintaa on Riehlen mukaan esimerkiksi hakukoneiden tukeminen ja
+avoimen lähdekoodin projekteja listaaviin portaaleihin kirjautuminen. Riehle
+nostaa esille myös projektin esittelyn ja dokumentoinnin merkityksen, kun uusi
+käyttäjä tai mahdollinen kehittäjä tutustuu projektiin. Dokumentaation,
+tutoriaalien kirjoittaminen ja käytäntöjen selkeyttäminen auttoi myös
+Mozilla-projektia keräämään osallistujia alun vaikeuksien jälkeen
+\parencite{Mockus-2002}.
+
+Avoimen lähdekoodin projektien suosimat alustat versiohallintajärjestelmille,
+kuten GitHub, mahdollistavat ohjelmiston kehittämisen hajautetusti. Lähdekoodin
+kirjoittamisen ja testaamisen onnistuu lokaalissa ympäristössä, ja
+muutostiedostoja voidaan antaa yhteisön tarkasteltavaksi pilvipalvelun kautta.
+(Tarviiko lähdettä?) \textcite{Sharma-2002} mukaan kehitystyötä voidaan tehdä
+joko yksin, tai osana väliaikaista tiimiä. Ennen muutostiedoston hyväksymistä,
+sen tulee käydä läpi vertaisarviointi, jossa muut projektiin osallistuvat
+katselmoivat lisättävän koodin sen laadun varmistamiseksi, sekä antavat siitä
+palautetta. Vertaisarviointikäytänteet vaihtelevat projekteittain, joskus koodi
+luotetun kehittäjän kirjoittama koodi voidaan lisätä projektiin jo ennen
+katselmointia \parencite{Wang-2015,Rigby-2008}.
+
+% (Perusteet sille miksi kehityksen ohjaus on tärkeää laadun ja virheiden
+% kannalta. Tarvitaanko vertailua teollisuusprojektien vastaaviin käytäntöihin?)
+
+\section{Projektin hallinta}
 %Erilaiset organisatiot: Hierarkinen ja keskitetty (Linux), modulaarinen jne...
 Hyvin menestyneet avoimen lähdekoodin ohjelmistoprojektit houkuttelevat paljon
 osallistujia. Jossain vaiheessa kasvaneen projektin ohjaamisen, päätöstenteon ja
 vastuiden jakamisen tueksi syntyy hallinnan järjestelmä. %
 % Tarvitaanko esimerkkejä päätöksistä tai jotain muuta. DE LAAT!!
 \textcite{Laat-2007} erittelee kuusi kategoriaa, joihin avoimen lähdekoodin
-ohjelmistoprojektien hallinnan työkalut voidaan jakaa.%
+ohjelmistoprojektien hallinnan työkalut voidaan jakaa. %
 \textbf{Modularisoinnilla} tarkoitetaan ohjelmiston jakamista pienempiin
 itsenäisiin osiin. Samaan aikaan voidaan kehittää myös saman ohjelmiston eri
 versioita.%
@@ -146,6 +235,7 @@ näkökulmasta.
 
 (Laadun hallinta)
 
+\section{Vertaisarviointi ja bugien raportointi}
 (Ehkä oma kappale siitä mitä tapahtuu ennen vertaisarviointia?)
 
 Kun ohjelmiston lähdekoodia muokataan, on usein kyse joko siitä, että ohjelmaan
@@ -165,10 +255,9 @@ henkilöille.%
 Priorisoinnilla pyritään järjestämään tehtävät niiden tärkeyden ja kriittisyyden
 perusteella. Korkeamman prioriteetin tehtävät halutaan hoitaa ennen pienemmän
 prioriteetin tehtäviä.%
-Koska avoimen lähdekoodin projekteihin osallistutaan usein
-vapaa-ajalla, tehävien delegointi tapahtuu usein kehittäjien omien
-mielenkiinnon- ja osaamiskohteiden sekä käytettävissä olevien resurssien
-perusteella.%
+Koska avoimen lähdekoodin projekteihin osallistutaan usein vapaa-ajalla,
+tehävien delegointi tapahtuu usein kehittäjien omien mielenkiinnon- ja
+osaamiskohteiden sekä käytettävissä olevien resurssien perusteella.%
 Triagen voi hoitaa joko yksi projektiin perehtynyt kehittäjä, tai ryhmä
 kehittäjiä. 
 
@@ -199,12 +288,6 @@ määräämien kenttien perusteella. Sen lisäksi issues-työkalua käytetään 
 kehitystehtävien kirjaamiseen.  Onkin siis syytä olettaa, että tässä
 tutkimuksessa käytettävien avoimen lähdekoodin ohjelmistoprojektien välillä on
 eroja bugien raportoinnissa ja vertaisarvioinnin käytännöissä.
-
-\section{Bugien seuranta}
-\begin{itemize}
-  \item Bugit
-  \item Raportointi - Korjaus
-\end{itemize}
   
 \chapter{Tiedonlouhinta ja koneoppiminen}
 % - Tiedonlouhinta
